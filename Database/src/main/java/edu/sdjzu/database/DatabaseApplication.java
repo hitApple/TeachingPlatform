@@ -7,3 +7,4 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @MapperScan("edu.sdjzu.database.mapper")
 public class DatabaseApplication {}
+
