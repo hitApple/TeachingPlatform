@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.sdjzu.mapper.TcDifficultyMapper">
+    <select id="getTcDifficultyById" resultType="TcDifficulty">
+        select *
+        from tc_difficulty t
+        where t.teacher_id = #{teacherId}
+          and t.course_id = #{courseId}
+    </select>
+
+    <select id="getAllTcDifficultys" resultType="TcDifficulty">
+        select *
+        from tc_difficulty
+    </select>
+
+    <insert id="insertTcDifficulty" parameterType="TcDifficulty">
+        <!--        <selectKey keyProperty="id" resultType="int" order="BEFORE">-->
+        <!--            select last_insert_id()-->
+        <!--        </selectKey>-->
+        insert into tc_difficulty(teacher_id, course_id, score, advice) values(#{teacherId}, #{courseId}, #{score},
+        #{advice})
+    </insert>
+
+    <delete id="deleteTcDifficultyById">
+        delete
+        from tc_difficulty
+        where teacher_id = #{teacherId}
+          and course_id = #{courseId}
+    </delete>
+
+    <update id="updateTcDifficulty" parameterType="TcDifficulty">
+        update tc_difficulty
+        set score  = #{score},
+            advice = #{advice}
+        where teacher_id = #{teacherId}
+          and course_id = #{courseId}
+    </update>
+</mapper>

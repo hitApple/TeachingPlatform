@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.sdjzu.mapper.AbsenceMapper">
+    <select id="getAbsenceById" resultType="Absence">
+        select *
+        from absence
+        where stu_id = #{stuId}
+          and course_id = #{courseId}
+          and teacher_id = #{teacherId}
+    </select>
+
+    <select id="getAllAbsences" resultType="Absence">
+        select *
+        from absence
+    </select>
+
+    <insert id="insertAbsence" parameterType="Absence">
+        <!--        <selectKey keyProperty="id" resultType="int" order="BEFORE">-->
+        <!--            select last_insert_id()-->
+        <!--        </selectKey>-->
+        insert into absence(stu_id, course_id, teacher_id, date, reason) values(#{stuId}, #{courseId}, #{teacherId},
+        #{date}, #{reason})
+    </insert>
+
+    <delete id="deleteAbsenceById">
+        delete
+        from absence
+        where stu_id = #{stuId}
+          and course_id = #{courseId}
+          and teacher_id = #{teacherId}
+    </delete>
+
+    <update id="updateAbsence" parameterType="Absence">
+        update absence
+        set date = #{date},
+            reason  = #{reason}
+        where stu_id = #{stuId}
+          and course_id = #{courseId}
+          and teacher_id = #{teacherId}
+    </update>
+</mapper>

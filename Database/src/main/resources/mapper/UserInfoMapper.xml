@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.sdjzu.mapper.UserInfoMapper">
+    <select id="getUserInfoById" resultType="UserInfo">
+        select *
+        from user_info u
+        where u.id = #{id}
+    </select>
+
+    <select id="getAllUserInfos" resultType="UserInfo">
+        select *
+        from user_info
+    </select>
+
+    <insert id="insertUserInfo" parameterType="UserInfo">
+        <!--        <selectKey keyProperty="id" resultType="int" order="BEFORE">-->
+        <!--            select last_insert_id()-->
+        <!--        </selectKey>-->
+        insert into user_info(id, name, gender, birthday, tel, email, nation, address) values(#{id}, #{name}, #{gender},
+        #{birthday}, #{tel}, #{email}, #{nation}, #{address})
+    </insert>
+
+    <delete id="deleteUserInfoById">
+        delete
+        from user_info
+        where id = #{id}
+    </delete>
+
+    <update id="updateUserInfo" parameterType="UserInfo">
+        update user_info
+        set name     = #{name},
+            gender   = #{gender},
+            birthday = #{birthday},
+            tel      = #{tel},
+            email    = #{email},
+            nation   = #{nation},
+            address  = #{address}
+        where id = #{id}
+    </update>
+</mapper>

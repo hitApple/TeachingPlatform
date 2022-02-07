@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.sdjzu.mapper.KnowledgeMapper">
+    <select id="getKnowledgeById" resultType="Knowledge">
+        select *
+        from knowledge k
+        where k.id = #{id}
+    </select>
+
+    <select id="getAllKnowledge" resultType="Knowledge">
+        select *
+        from knowledge
+    </select>
+
+    <insert id="insertKnowledge" parameterType="Knowledge">
+        <!--        <selectKey keyProperty="id" resultType="int" order="BEFORE">-->
+        <!--            select last_insert_id()-->
+        <!--        </selectKey>-->
+        insert into knowledge(id, category, title, description) values(#{id}, #{category}, #{title}, #{description})
+    </insert>
+
+    <delete id="deleteKnowledgeById">
+        delete
+        from knowledge
+        where id = #{id}
+    </delete>
+
+    <update id="updateKnowledge" parameterType="Knowledge">
+        update knowledge
+        set category    = #{category},
+            title       = #{title},
+            description = #{description}
+        where id = #{id}
+    </update>
+</mapper>

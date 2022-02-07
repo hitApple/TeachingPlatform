@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.sdjzu.mapper.CourseInfoMapper">
+    <select id="getCourseInfoById" resultType="CourseInfo">
+        select *
+        from course_info c
+        where c.id = #{id}
+    </select>
+
+    <select id="getAllCourseInfos" resultType="CourseInfo">
+        select *
+        from course_info
+    </select>
+
+    <insert id="insertCourseInfo" parameterType="CourseInfo">
+        <!--        <selectKey keyProperty="id" resultType="int" order="BEFORE">-->
+        <!--            select last_insert_id()-->
+        <!--        </selectKey>-->
+        insert into course_info(id, name, teacher, class_hour, credit, category, classroom, is_optional) values(#{id},
+        #{name}, #{teacher}, #{classHour}, #{credit}, #{category}, #{classroom}, #{isOptional})
+    </insert>
+
+    <delete id="deleteCourseInfoById">
+        delete
+        from course_info
+        where id = #{id}
+    </delete>
+
+    <update id="updateCourseInfo" parameterType="CourseInfo">
+        update course_info
+        set name        = #{name},
+            teacher     = #{teacher},
+            class_hour  = #{classHour},
+            credit      = #{credit},
+            category    = #{category},
+            classroom   = #{classroom},
+            is_optional = #{isOptional}
+        where id = #{id}
+    </update>
+</mapper>

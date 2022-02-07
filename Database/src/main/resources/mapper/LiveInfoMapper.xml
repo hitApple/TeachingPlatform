@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.sdjzu.mapper.LiveInfoMapper">
+    <select id="getLiveInfoById" resultType="LiveInfo">
+        select *
+        from live_info l
+        where l.id = #{id}
+    </select>
+
+    <select id="getAllLiveInfos" resultType="LiveInfo">
+        select *
+        from live_info
+    </select>
+
+    <insert id="insertLiveInfo" parameterType="LiveInfo">
+        <!--        <selectKey keyProperty="id" resultType="int" order="BEFORE">-->
+        <!--            select last_insert_id()-->
+        <!--        </selectKey>-->
+        insert into live_info(id) values(#{id})
+    </insert>
+
+    <delete id="deleteLiveInfoById">
+        delete
+        from live_info
+        where id = #{id}
+    </delete>
+
+    <update id="updateLiveInfo" parameterType="LiveInfo">
+        --         update liveInfo set liveInfoname = #{liveInfoname}, password = #{password}, role = #{role} where id = #{id}
+    </update>
+</mapper>

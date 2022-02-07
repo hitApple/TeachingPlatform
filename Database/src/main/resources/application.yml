@@ -1,0 +1,20 @@
+#数据源配置
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3306/teaching_platform?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: yu74174112
+#      type: com.alibaba.druid.pool.DruidDataSource
+      type: com.alibaba.druid.pool.DruidDataSource
+      stat-view-servlet:
+        enabled: true
+
+#mybatis配置
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+#  config-location: classpath:sqlMapConfig.xml
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: edu.sdjzu.model

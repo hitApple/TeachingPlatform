@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.sdjzu.mapper.StEvaluationMapper">
+    <select id="getStEvaluationById" resultType="StEvaluation">
+        select *
+        from st_evaluation s
+        where s.stu_id = #{stuId}
+          and s.teacher_id = #{teacherId}
+    </select>
+
+    <select id="getAllStEvaluations" resultType="StEvaluation">
+        select *
+        from st_evaluation
+    </select>
+
+    <insert id="insertStEvaluation" parameterType="StEvaluation">
+        <!--        <selectKey keyProperty="id" resultType="int" order="BEFORE">-->
+        <!--            select last_insert_id()-->
+        <!--        </selectKey>-->
+        insert into st_evaluation(stu_id, teacher_id, during, rank, evaluation) values(#{stuId}, #{teacherId}, #{during},
+        #{rank}, #{evaluation})
+    </insert>
+
+    <delete id="deleteStEvaluationById">
+        delete
+        from st_evaluation
+        where stu_id = #{stuId}
+          and teacher_id = #{teacherId}
+    </delete>
+
+    <update id="updateStEvaluation" parameterType="StEvaluation">
+        update st_evaluation
+        set during     = #{during},
+            rank       = #{rank},
+            evaluation = #{evaluation}
+        where stu_id = #{stuId}
+          and teacher_id = #{teacherId}
+    </update>
+</mapper>

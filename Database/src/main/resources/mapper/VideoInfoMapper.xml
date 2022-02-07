@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.sdjzu.mapper.VideoInfoMapper">
+    <select id="getVideoInfoById" resultType="VideoInfo">
+        select *
+        from video_info v
+        where v.id = #{id}
+    </select>
+
+    <select id="getAllVideoInfos" resultType="VideoInfo">
+        select *
+        from video_info
+    </select>
+
+    <insert id="insertVideoInfo" parameterType="VideoInfo">
+        <!--        <selectKey keyProperty="id" resultType="int" order="BEFORE">-->
+        <!--            select last_insert_id()-->
+        <!--        </selectKey>-->
+        insert into video_info(id, name, category, time, introduction, is_necessarily, url) values(#{id}, #{name},
+        #{category}, #{time}, #{introduction}, #{isNecessarily}, #{url})
+    </insert>
+
+    <delete id="deleteVideoInfoById">
+        delete
+        from video_info
+        where id = #{id}
+    </delete>
+
+    <update id="updateVideoInfo" parameterType="VideoInfo">
+        update video_info
+        set name           = #{name},
+            category       = #{category},
+            time           = #{time},
+            introduction   = #{introduction},
+            is_necessarily = #{isNecessarily},
+            url            = #{url}
+        where id = #{id}
+    </update>
+</mapper>

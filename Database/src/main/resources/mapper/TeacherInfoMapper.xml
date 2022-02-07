@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.sdjzu.mapper.TeacherInfoMapper">
+    <select id="getTeacherInfoById" resultType="TeacherInfo">
+        select *
+        from teacher_info u
+        where u.id = #{id}
+    </select>
+
+    <select id="getAllTeacherInfos" resultType="TeacherInfo">
+        select *
+        from teacher_info
+    </select>
+
+    <insert id="insertTeacherInfo" parameterType="TeacherInfo">
+        <!--        <selectKey keyProperty="id" resultType="int" order="BEFORE">-->
+        <!--            select last_insert_id()-->
+        <!--        </selectKey>-->
+        insert into teacher_info(id, dept, duty, direction) values(#{id}, #{dept}, #{duty}, #{direction})
+    </insert>
+
+    <delete id="deleteTeacherInfoById">
+        delete
+        from teacher_info
+        where id = #{id}
+    </delete>
+
+    <update id="updateTeacherInfo" parameterType="TeacherInfo">
+        update teacher_info
+        set dept      = #{dept},
+            duty      = #{duty},
+            direction = #{direction}
+        where id = #{id}
+    </update>
+</mapper>

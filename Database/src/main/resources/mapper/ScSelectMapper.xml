@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.sdjzu.mapper.ScSelectMapper">
+    <select id="getScSelectById" resultType="ScSelect">
+        select *
+        from sc_select s
+        where s.stu_id = #{stuId}
+          and s.course_id = #{courseId}
+    </select>
+
+    <select id="getAllScSelects" resultType="ScSelect">
+        select *
+        from sc_select
+    </select>
+
+    <insert id="insertScSelect" parameterType="ScSelect">
+        <!--        <selectKey keyProperty="id" resultType="int" order="BEFORE">-->
+        <!--            select last_insert_id()-->
+        <!--        </selectKey>-->
+        insert into sc_select(stu_id, course_id, during, is_necessary, is_recommend, select_reason) values(#{stuId},
+        #{courseId}, #{during}, #{isNecessary}, #{isRecommend}, #{selectReason})
+    </insert>
+
+    <delete id="deleteScSelectById">
+        delete
+        from sc_select
+        where stu_id = #{stuId}
+          and course_id = #{courseId}
+    </delete>
+
+    <update id="updateScSelect" parameterType="ScSelect">
+        update sc_select
+        set during       = #{during},
+            is_necessary = #{isNecessary},
+            is_recommend = #{isRecommend},
+            select_reason = #{selectReason}
+        where stu_id = #{stuId}
+          and course_id = #{courseId}
+    </update>
+</mapper>
