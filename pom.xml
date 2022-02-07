@@ -9,8 +9,7 @@
     <packaging>pom</packaging>
     <version>1.0</version>
     <modules>
-        <module>Database</module>
-        <module>WebApplication</module>
+        <module>WebModule</module>
     </modules>
 
     <properties>
@@ -43,12 +42,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.22</version>
-        </dependency>
-        <dependency>
-            <groupId>edu.sdjzu</groupId>
-            <artifactId>Database</artifactId>
-            <version>1.0</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 
