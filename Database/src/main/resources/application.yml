@@ -17,4 +17,4 @@ mybatis:
     map-underscore-to-camel-case: true
 #  config-location: classpath:sqlMapConfig.xml
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: edu.sdjzu.model
+  type-aliases-package: edu.sdjzu.database.model
