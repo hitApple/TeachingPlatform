@@ -46,4 +46,9 @@ public class UserController {
         userService.updateUser(user);
         return "Operation successful!";
     }
+
+    @RequestMapping("queryByUserName")
+    public User queryByUserName(String userName){
+        return userService.getUserByUserName(userName);
+    }
 }

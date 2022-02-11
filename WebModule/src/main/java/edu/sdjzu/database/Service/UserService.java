@@ -18,5 +18,8 @@ public interface UserService {
 
     void updateUser(User user);
 
+    User getUserByUserName(String username);
+
+    boolean loginCheck(String username, String password);
 
 }

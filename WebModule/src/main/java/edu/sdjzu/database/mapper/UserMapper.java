@@ -18,4 +18,6 @@ public interface UserMapper {
 
     void updateUser(User user);
 
+    User getUserByUserName(String UserName);
+
 }

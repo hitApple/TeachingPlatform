@@ -1,4 +1,4 @@
-package edu.sdjzu.database;
+package edu.sdjzu;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

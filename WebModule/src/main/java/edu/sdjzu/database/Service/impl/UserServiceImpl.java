@@ -42,5 +42,15 @@ public class UserServiceImpl implements UserService {
         userMapper.updateUser(user);
     }
 
+    @Override
+    public User getUserByUserName(String username) {
+        return userMapper.getUserByUserName(username);
+    }
+
+    @Override
+    public boolean loginCheck(String username, String password) {
+        return userMapper.getUserByUserName(username).getPassword().equals(password.trim());
+    }
+
 
 }
