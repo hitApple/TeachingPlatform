@@ -1,5 +1,6 @@
 package edu.sdjzu.web.controller;
 
+import edu.sdjzu.web.unit.VideoUnit;
 import edu.sdjzu.web.video.VideoResourceHttpRequestHandler;
 import lombok.AllArgsConstructor;
 import org.springframework.util.ClassUtils;
@@ -30,14 +31,13 @@ public class VideoController {
 //        String sourcePath = ClassUtils.getDefaultClassLoader().getResource("").getPath().substring(1);
 //        String realPath = sourcePath + "static/a.mp4";
 //        String realPath = "D:\\素材\\动态壁纸\\" + "随机刀痕光效.mp4";
-        String realPath = "D:\\素材\\动态壁纸\\" + id;
-
-        Path filePath = Paths.get(realPath );
+//        String realPath = "D:\\素材\\动态壁纸\\" + id;
+        String realPath = VideoUnit.getVideoUrl(id, true);
+        Path filePath = Paths.get(realPath);
         if (Files.exists(filePath)) {
-            //获得文件的网页资源类型
-            String mimeType = Files.probeContentType(filePath);
-            if (!StringUtils.isEmpty(mimeType)) {
-                response.setContentType(mimeType);
+            String contentType = VideoUnit.getContentType(filePath);
+            if (contentType != null){
+                response.setContentType(contentType);
             }
             request.setAttribute(VideoResourceHttpRequestHandler.ATTR_FILE, filePath);
             videoResourceHttpRequestHandler.handleRequest(request, response);
